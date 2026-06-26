@@ -1,0 +1,41 @@
+{
+  "id": "3.5",
+  "subject": "math",
+  "type": "lesson",
+  "order": 5,
+  "title": "The Mental Math Checkpoint",
+
+  "slides": [
+    {
+      "header": "ARALIN 3.5",
+      "title":  "Pagdadagdag sa Isip",
+      "body":   "Pagdaragdag ng sampuan: 340 + 20 — idagdag lang ang sampuan! 34 sampuan + 2 sampuan = 36 sampuan, kaya 360! Pagdaragdag ng daanan: 340 + 200 = 540!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🧠",
+        "entries": [
+          { "n": 1, "word": "Sampuan" },
+          { "n": 2, "word": "Daanan" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 3.5",
+      "title":  "Multi-Step na Suliranin",
+      "body":   "May 230 barya si Pip. Nagkita siya ng 40 pa, tapos 5 pa mula sa bonus chest. Dalawang hakbang: 230+40=270, tapos 270+5=275!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🏰",
+        "count": 3,
+        "label": "Tatlong Hakbang! (3) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga tore sa checkpoint?", "emoji": "🏰", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang mga barya sa bonus chest?", "emoji": "🪙", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang mga barko na sumama sa fleet?", "emoji": "🚢", "count": 3, "opts": [1,2,3,4], "ans": 3 }
+  ],
+  "passThreshold": 2
+}

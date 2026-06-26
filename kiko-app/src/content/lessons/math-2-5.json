@@ -1,0 +1,41 @@
+{
+  "id": "2.5",
+  "subject": "math",
+  "type": "lesson",
+  "order": 5,
+  "title": "BOSS CHALLENGE: The Pirate Fleet Census",
+
+  "slides": [
+    {
+      "header": "ARALIN 2.5 — BOSS CHALLENGE",
+      "title":  "Tunay na Buhay na Paghahambing",
+      "body":   "Sinusuri ng Pirate King ang bawat barko sa fleet! Kailangan ikumpara ni Pip ang bilang ng tripulante, halaga ng yaman, at distansya ng pagbiyahe para sahagutan ang mga tanong ng Hari.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🚢",
+        "entries": [
+          { "n": 1, "word": "Barko A" },
+          { "n": 2, "word": "Barko B" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 2.5 — BOSS CHALLENGE",
+      "title":  "Pareho ring Paraan, Tunay na Sitwasyon",
+      "body":   "Ang barko na lumayag ng 430 milya ay mas malayo kaysa 340 milya. Ang kabang nagkakahalaga ng 705 ay mas mura kaysa 750. Pareho ring patakaran ang ginagamit kahit sa totoong buhay!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🏆",
+        "count": 5,
+        "label": "Limang Barko! (5) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga barko sa fleet?", "emoji": "🚢", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang mga kaban ng yaman?", "emoji": "📦", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang mga medalya na ipagkakaloob ng Hari?", "emoji": "🏅", "count": 3, "opts": [1,2,3,4], "ans": 3 }
+  ],
+  "passThreshold": 2
+}

@@ -1,0 +1,42 @@
+{
+  "id": "2.3",
+  "subject": "math",
+  "type": "lesson",
+  "order": 3,
+  "title": "Symbol Showdown",
+
+  "slides": [
+    {
+      "header": "ARALIN 2.3",
+      "title":  "Mga Simbolo: >, <, =",
+      "body":   "Dalawang grupo ng pirata ang nagtatalo kung sino ang may mas malaking yaman! Ang > ay 'mas malaki kaysa', ang < ay 'mas mababa kaysa', at ang = ay 'pareho'.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 1, "word": ">" },
+          { "n": 2, "word": "<" },
+          { "n": 3, "word": "=" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 2.3",
+      "title":  "Ihambing ang Daan, Sampu, Isa",
+      "body":   "Kumpara 342 at 298: alin ang may mas maraming daan? 342! Kaya 342 > 298. Tingnan muna ang daanan, tapos sampuan, tapos isahan.",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "💰",
+        "count": 9,
+        "label": "Siyam! (9) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga kaban ng ginto?", "emoji": "📦", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang mga barya sa unang pundok?", "emoji": "🪙", "count": 7, "opts": [5,6,7,8], "ans": 7 },
+    { "q": "Ilan ang mga barya sa ikalawang pundok?", "emoji": "🥈", "count": 7, "opts": [5,6,7,8], "ans": 7 }
+  ],
+  "passThreshold": 2
+}

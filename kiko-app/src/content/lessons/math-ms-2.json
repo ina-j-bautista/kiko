@@ -1,0 +1,16 @@
+{
+  "id": "ms2",
+  "subject": "math",
+  "type": "mastery",
+  "order": 10,
+  "title": "Mastery Test: Comparing & Ordering Numbers",
+
+  "checks": [
+    { "q": "Ilan ang mga barya na ginto?",       "emoji": "🪙", "count": 3, "opts": [2,3,4,5],  "ans": 3 },
+    { "q": "Ilan ang mga barya na pilak?",       "emoji": "🥈", "count": 5, "opts": [3,4,5,6],  "ans": 5 },
+    { "q": "Ilan ang mga parrot na lumahi?",     "emoji": "🦜", "count": 5, "opts": [3,4,5,6],  "ans": 5 },
+    { "q": "Ilan ang mga kaban ng yaman?",       "emoji": "📦", "count": 4, "opts": [2,3,4,5],  "ans": 4 },
+    { "q": "Ilan ang mga barko sa fleet?",       "emoji": "🚢", "count": 5, "opts": [3,4,5,6],  "ans": 5 }
+  ],
+  "passThreshold": 4
+}

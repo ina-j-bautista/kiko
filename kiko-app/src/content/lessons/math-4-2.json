@@ -1,0 +1,42 @@
+{
+  "id": "4.2",
+  "subject": "math",
+  "type": "lesson",
+  "order": 2,
+  "title": "Pip's Fact Family Reunion",
+
+  "slides": [
+    {
+      "header": "ARALIN 4.2",
+      "title":  "Fact Families",
+      "body":   "Tandaan ang 4 + 3 = 7? Pamilya ito ng TATLONG numero: 4, 3, at 7. Ito rin ang pamilya na gumagawa ng subtraction facts! 7 − 3 = 4, at 7 − 4 = 3.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "👨‍👩‍👧",
+        "entries": [
+          { "n": 4, "word": "Apat" },
+          { "n": 3, "word": "Tatlo" },
+          { "n": 7, "word": "Pito" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 4.2",
+      "title":  "Isang Bagay, Lahat Alam Mo",
+      "body":   "Kung alam mo ang isang fact sa pamilya, alam mo na ang LAHAT! 5+2=7, kaya 7−2=5 at 7−5=2. Pareho ring tatlong numero, ibang ayos lang!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🏠",
+        "count": 3,
+        "label": "Tatlong Numero! (3) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ano ang nawawalang numero sa pamilya: 6, 2, ___?", "emoji": "🏠", "count": 8, "opts": [6,7,8,9], "ans": 8 },
+    { "q": "Kung 5+4=9, ano ang sagot sa 9−4?", "emoji": "🪙", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang block sa fact family na 4, 5, 9?", "emoji": "🧱", "count": 9, "opts": [7,8,9,10], "ans": 9 }
+  ],
+  "passThreshold": 2
+}

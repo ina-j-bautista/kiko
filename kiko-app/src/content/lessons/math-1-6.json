@@ -1,0 +1,41 @@
+{
+  "id": "1.6",
+  "subject": "math",
+  "type": "lesson",
+  "order": 6,
+  "title": "BOSS CHALLENGE: The Thousand-Island Vault",
+
+  "slides": [
+    {
+      "header": "ARALIN 1.6 — BOSS CHALLENGE",
+      "title":  "Mga Libuhan",
+      "body":   "Natutunan mo na ang hundreds — ngayon, kilalanin ang THOUSANDS! 10 crates ng 100 ay gumagawa ng 1 super-crate ng 1,000! Tingnan ang 4,256: 4 thousands, 2 hundreds, 5 tens, 6 ones.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🏆",
+        "entries": [
+          { "n": 1, "word": "Super-Crate" },
+          { "n": 10, "word": "Crates" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 1.6 — BOSS CHALLENGE",
+      "title":  "Pagtatantya (Rounding)",
+      "body":   "Hindi lagi natin kailangan ang eksaktong bilang — pwede tayong magtantya! 47 ay nagiging 50 (mas malapit sa 50 kaysa 40). 230 ay nagiging 200 (mas malapit sa 200 kaysa 300)!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "💰",
+        "count": 4,
+        "label": "Apat na Libuhan! (4,000) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang super-crate (libuhan) na nakikita sa Vault?", "emoji": "🏆", "count": 2, "opts": [1,2,3,4], "ans": 2 },
+    { "q": "Ilan ang crate na kailangan para gumawa ng 1 libuhan?", "emoji": "📦", "count": 10, "opts": [8,9,10,11], "ans": 10 },
+    { "q": "Ilan ang mga kahon ng ginto na bumukas sa Vault?", "emoji": "💰", "count": 5, "opts": [3,4,5,6], "ans": 5 }
+  ],
+  "passThreshold": 2
+}

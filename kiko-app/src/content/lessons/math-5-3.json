@@ -1,0 +1,42 @@
+{
+  "id": "5.3",
+  "subject": "math",
+  "type": "lesson",
+  "order": 3,
+  "title": "Pip's Great Shape Sort",
+
+  "slides": [
+    {
+      "header": "ARALIN 5.3",
+      "title":  "Pagsasort ng Hugis",
+      "body":   "Kapag nag-sort tayo, hanapin natin ang PAREHO sa buong grupo! Bin 1: '3 sides' — lahat ng triangle. Bin 2: '4 magkaparehong sides' — lahat ng square.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🗂️",
+        "entries": [
+          { "n": 1, "word": "Bin 1" },
+          { "n": 2, "word": "Bin 2" },
+          { "n": 3, "word": "Bin 3" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 5.3",
+      "title":  "Hanapin ang Shared Rule",
+      "body":   "Bin 3: 'may kurba' — circle at oval ang pumupunta dito. Hanapin ang RULE, tapos suriin ang bawat hugis kontra sa rule!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "📦",
+        "count": 3,
+        "label": "Tatlong Bin! (3) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang bins sa pagsort?", "emoji": "🗂️", "count": 3, "opts": [1,2,3,4], "ans": 3 },
+    { "q": "Ilan ang hugis na may 3 sides sa grupo?", "emoji": "🔺", "count": 3, "opts": [1,2,3,4], "ans": 3 },
+    { "q": "Ilan ang hugis na pinagsort sa bin?", "emoji": "📦", "count": 8, "opts": [6,7,8,9], "ans": 8 }
+  ],
+  "passThreshold": 2
+}

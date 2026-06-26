@@ -1,0 +1,42 @@
+{
+  "id": "2.4",
+  "subject": "math",
+  "type": "lesson",
+  "order": 4,
+  "title": "The Great Treasure Lineup",
+
+  "slides": [
+    {
+      "header": "ARALIN 2.4",
+      "title":  "Increasing at Decreasing Order",
+      "body":   "Gusto ni Captain Pip na ihanay ang kanyang mga kaban ng yaman — minsan pinakamaliit hanggang pinakamalaki, minsan kabaligtaran, para sa Pirate Parade!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "📦",
+        "entries": [
+          { "n": 1, "word": "Pinakamaliit" },
+          { "n": 2, "word": "Gitna" },
+          { "n": 3, "word": "Pinakamalaki" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 2.4",
+      "title":  "Hambingin ang Marami Sabay-Sabay",
+      "body":   "Hanggang ngayon ay dalawa lang ang inihahambing natin. Ngayon, ihahanay natin ang MARAMING bilang nang sabay-sabay, isa-isa nating ikukumpara hanggang maayos lahat.",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🪜",
+        "count": 4,
+        "label": "Apat na Kaban! (4) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga kaban sa hanay?", "emoji": "📦", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang mga barya sa unang kaban?", "emoji": "🪙", "count": 3, "opts": [1,2,3,4], "ans": 3 },
+    { "q": "Ilan ang mga hakbang sa hagdan?", "emoji": "🪜", "count": 4, "opts": [2,3,4,5], "ans": 4 }
+  ],
+  "passThreshold": 2
+}

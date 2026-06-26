@@ -1,0 +1,41 @@
+{
+  "id": "4.6",
+  "subject": "math",
+  "type": "lesson",
+  "order": 6,
+  "title": "BOSS CHALLENGE: The Final Treasure Count",
+
+  "slides": [
+    {
+      "header": "ARALIN 4.6 — BOSS CHALLENGE",
+      "title":  "Mas Malalaking Pagbabawas",
+      "body":   "3,420 − 1,260: bawasin ang isahan, sampuan, daanan, libuhan, mag-regroup kung kailangan. Sagot: 2,160!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🏆",
+        "entries": [
+          { "n": 1, "word": "Bawas" },
+          { "n": 2, "word": "Tantya" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 4.6 — BOSS CHALLENGE",
+      "title":  "Pagtatantya ng Pagkakaiba",
+      "body":   "Minsan hindi natin kailangan ang eksaktong sagot. I-round muna: 3,420→3,400, 1,260→1,300. Tantya: 3,400−1,300=2,100 — mabilis na malapit sa tunay na sagot!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "👑",
+        "count": 2,
+        "label": "Dalawang Port! (2) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga port na binayaran ng fleet?", "emoji": "⚓", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang mga treasure tower na binuwag?", "emoji": "🏰", "count": 1, "opts": [1,2,3,4], "ans": 1 },
+    { "q": "Ilan ang mga crown na makukuha sa Boss?", "emoji": "👑", "count": 1, "opts": [1,2,3,4], "ans": 1 }
+  ],
+  "passThreshold": 2
+}

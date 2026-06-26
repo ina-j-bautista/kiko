@@ -1,0 +1,41 @@
+{
+  "id": "4.1",
+  "subject": "math",
+  "type": "lesson",
+  "order": 1,
+  "title": "Pip's Spending Spree",
+
+  "slides": [
+    {
+      "header": "ARALIN 4.1",
+      "title":  "Pagkuha ng Bahagi",
+      "body":   "May 5 barya si Pip. Gumastos siya ng 2 barya sa meryenda — KUNIN! Bilangin ang natitira: 1, 2, 3. Tatlong barya ang natitira!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 5, "word": "Lima" },
+          { "n": 3, "word": "Tatlo" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 4.1",
+      "title":  "5 Bawas 2 Ay 3",
+      "body":   "Ito ang SUBTRACTION — pagtanggal mula sa pundok para makita ang natitira. 5 bawas 2 ay katumbas ng 3. Isulat natin: 5 − 2 = 3.",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🐚",
+        "count": 3,
+        "label": "Tatlo! (3) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang natitirang kabibe kung 1 ang kinuha mula sa 4?", "emoji": "🐚", "count": 3, "opts": [2,3,4,5], "ans": 3 },
+    { "q": "Ilan ang natitirang parrot kung 4 lumipad palayo mula sa 9?", "emoji": "🦜", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang natitirang block kung 3 kinuha mula sa 8?", "emoji": "🧱", "count": 5, "opts": [3,4,5,6], "ans": 5 }
+  ],
+  "passThreshold": 2
+}

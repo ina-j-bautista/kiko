@@ -1,0 +1,42 @@
+{
+  "id": "1.5",
+  "subject": "math",
+  "type": "lesson",
+  "order": 5,
+  "title": "The Counting Checkpoint",
+
+  "slides": [
+    {
+      "header": "ARALIN 1.5",
+      "title":  "Bilangin nang Mabilis",
+      "body":   "Sa halip na isa-isang bilangin, bilangin natin nang MABILIS — sa 10s! 10, 20, 30... hanggang 100! Sa 50s: 50, 100, 150... Sa 100s: 100, 200, 300... hanggang 1,000!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🗺️",
+        "entries": [
+          { "n": 10, "word": "Sampu" },
+          { "n": 20, "word": "Dalawampu" },
+          { "n": 30, "word": "Tatlumpu" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 1.5",
+      "title":  "Expanded Form",
+      "body":   "Ang 347 ay pwede natin I-SPREAD OUT: '300 + 40 + 7.' Tinatawag itong EXPANDED FORM. Ipinapakita nito kung ano ang halaga ng bawat digit!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "📦",
+        "count": 5,
+        "label": "Limang Crate! (500) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang crate kung bibilangin natin sa 100s (5 crates)?", "emoji": "📦", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang tower keys na natagpuan sa checkpoint?", "emoji": "🔑", "count": 1, "opts": [1,2,3,4], "ans": 1 },
+    { "q": "Ilan ang mga tile sa expanded form ng 235?", "emoji": "🧩", "count": 3, "opts": [1,2,3,4], "ans": 3 }
+  ],
+  "passThreshold": 2
+}

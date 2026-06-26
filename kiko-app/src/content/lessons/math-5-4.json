@@ -1,0 +1,41 @@
+{
+  "id": "5.4",
+  "subject": "math",
+  "type": "lesson",
+  "order": 4,
+  "title": "The Mirror Lagoon",
+
+  "slides": [
+    {
+      "header": "ARALIN 5.4",
+      "title":  "Linya ng Symmetry",
+      "body":   "May mga hugis na may SYMMETRY LINE — isang fold line kung saan parehong magkatugma ang dalawang bahagi, tulad ng salamin. May 4 symmetry lines ang square!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪞",
+        "entries": [
+          { "n": 1, "word": "Fold" },
+          { "n": 2, "word": "Tugma" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 5.4",
+      "title":  "Posisyon at Direksyon",
+      "body":   "May treasure chest ABOVE the rock, BELOW the ledge. May LEFT, may RIGHT. Pumihit si Pip ng KALIWA o KANAN para makita ang treasure!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🦋",
+        "count": 4,
+        "label": "Apat na Symmetry Line! (4) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang symmetry lines ng isang square?", "emoji": "⬛", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang symmetry lines ng isang rectangle?", "emoji": "▬", "count": 2, "opts": [0,1,2,3], "ans": 2 },
+    { "q": "Ilan ang mirror shard na natagpuan ni Pip?", "emoji": "🪞", "count": 1, "opts": [1,2,3,4], "ans": 1 }
+  ],
+  "passThreshold": 2
+}

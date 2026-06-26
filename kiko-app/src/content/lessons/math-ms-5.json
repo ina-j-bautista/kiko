@@ -1,0 +1,16 @@
+{
+  "id": "ms5",
+  "subject": "math",
+  "type": "mastery",
+  "order": 10,
+  "title": "Mastery Test: Shapes & Geometry",
+
+  "checks": [
+    { "q": "Ilan ang gilid ng isang triangle?",                 "emoji": "🔺", "count": 3,  "opts": [2,3,4,5],     "ans": 3 },
+    { "q": "Ilan ang corner ng isang square?",                  "emoji": "⬛", "count": 4,  "opts": [2,3,4,5],     "ans": 4 },
+    { "q": "Ilan ang symmetry lines ng isang square?",          "emoji": "🪞", "count": 4,  "opts": [2,3,4,5],     "ans": 4 },
+    { "q": "Ano ang perimeter ng triangle na may sides 3m, 5m, 7m?", "emoji": "🧵", "count": 15, "opts": [12,13,14,15], "ans": 15 },
+    { "q": "Ilan ang faces ng isang cube?",                     "emoji": "🎲", "count": 6,  "opts": [4,5,6,7],     "ans": 6 }
+  ],
+  "passThreshold": 4
+}

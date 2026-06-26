@@ -1,0 +1,42 @@
+{
+  "id": "1.1",
+  "subject": "math",
+  "type": "lesson",
+  "order": 1,
+  "title": "Captain Pip's Treasure Hunt",
+
+  "slides": [
+    {
+      "header": "ARALIN 1.1",
+      "title":  "Bilangin ang Barya",
+      "body":   "Nakahanap si Captain Pip ng kaban ng yaman pero hindi niya mabilang ang kanyang mga barya! Tulungan natin siya — bilangin natin ito isa-isa.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 1, "word": "Isa" },
+          { "n": 2, "word": "Dalawa" },
+          { "n": 3, "word": "Tatlo" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 1.1",
+      "title":  "Isa Pang Barya",
+      "body":   "Nagkita ng isa pang barya si Pip! Bilangin natin ulit: 1, 2, 3, 4! Ang mga numero ay nagsasabi sa atin kung ILAN — at sinusulat natin ito gamit ang numeral.",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🪙",
+        "count": 4,
+        "label": "Apat! (4) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga barya ni Pip?", "emoji": "🪙", "count": 3, "opts": [2,3,4,5], "ans": 3 },
+    { "q": "Ilan ang mga kaban ng yaman?", "emoji": "📦", "count": 6, "opts": [4,5,6,7], "ans": 6 },
+    { "q": "Ilan ang mga bituin?", "emoji": "⭐", "count": 7, "opts": [5,6,7,8], "ans": 7 }
+  ],
+  "passThreshold": 2
+}

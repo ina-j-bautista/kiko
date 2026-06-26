@@ -1,0 +1,41 @@
+{
+  "id": "1.3",
+  "subject": "math",
+  "type": "lesson",
+  "order": 3,
+  "title": "Pip's Treasure Map",
+
+  "slides": [
+    {
+      "header": "ARALIN 1.3",
+      "title":  "May Pangalan ang Numero",
+      "body":   "Ang 23 ay isinusulat na 'twenty-three'! Tingnan ang 23: ang 2 ay sa TENS place (2 pouches = 20), ang 3 ay sa ONES place (3 loose coins).",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "📜",
+        "entries": [
+          { "n": 2, "word": "Tens" },
+          { "n": 3, "word": "Ones" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 1.3",
+      "title":  "Pagre-rename ng Barya",
+      "body":   "30 loose coins lahat — pwede natin RENAME ito bilang 3 tens at 0 ones! Lahat ng numero ay binubuo ng tens at ones.",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "👝",
+        "count": 3,
+        "label": "Tatlong Pouch! (3) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang pouch sa numerong 41 (4 pouches + 1)?", "emoji": "👝", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang loose coins sa numerong 41?", "emoji": "🪙", "count": 1, "opts": [0,1,2,3], "ans": 1 },
+    { "q": "Ilan ang mga scroll sa mapa?", "emoji": "📜", "count": 6, "opts": [4,5,6,7], "ans": 6 }
+  ],
+  "passThreshold": 2
+}

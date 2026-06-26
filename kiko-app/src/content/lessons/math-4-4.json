@@ -1,0 +1,41 @@
+{
+  "id": "4.4",
+  "subject": "math",
+  "type": "lesson",
+  "order": 4,
+  "title": "The Regrouping Lagoon",
+
+  "slides": [
+    {
+      "header": "ARALIN 4.4",
+      "title":  "Pag-regroup sa Pagbabawas",
+      "body":   "Bawasin natin ang 263 − 148. Isahan muna: 3−8 ay hindi sapat — i-regroup! Hiramin ang 1 sampuan, 13−8=5. Sagot: 115!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🌊",
+        "entries": [
+          { "n": 1, "word": "Hiram" },
+          { "n": 2, "word": "Bawas" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 4.4",
+      "title":  "Cascading Regroup",
+      "body":   "Minsan, kapag bawasan natin ang 500 − 1, nag-regroup ang LAHAT ng column — daanan, sampuan, isahan! Sagot: 499 — ito ang pinakamahirap na pattern!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🏝️",
+        "count": 4,
+        "label": "Apat na Daan Siyamnapu't Siyam! 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga isla sa lagoon?", "emoji": "🏝️", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang mga compass na natagpuan?", "emoji": "🧭", "count": 1, "opts": [1,2,3,4], "ans": 1 },
+    { "q": "Ilan ang mga alon na tinawid ni Pip?", "emoji": "🌊", "count": 5, "opts": [3,4,5,6], "ans": 5 }
+  ],
+  "passThreshold": 2
+}

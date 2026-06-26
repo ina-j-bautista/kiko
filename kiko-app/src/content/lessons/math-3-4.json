@@ -1,0 +1,41 @@
+{
+  "id": "3.4",
+  "subject": "math",
+  "type": "lesson",
+  "order": 4,
+  "title": "The Regrouping Reef",
+
+  "slides": [
+    {
+      "header": "ARALIN 3.4",
+      "title":  "Pag-regroup ng mga Numero",
+      "body":   "Umaapaw na ang mga kaban ni Pip! Kapag may column na may 10 o higit pa, kailangan i-REGROUP — palitan ang 10 isahan para sa 1 sampuan, para makatuloy sa paglalayag sa reef.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "📦",
+        "entries": [
+          { "n": 1, "word": "Isahan" },
+          { "n": 2, "word": "Sampuan" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 3.4",
+      "title":  "247 + 156 = 403",
+      "body":   "Isahan muna: 7+6=13. I-regroup! Sampuan: 4+5+1(dala)=10. I-regroup ulit! Daanan: 2+1+1(dala)=4. Sagot: 403!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🪸",
+        "count": 4,
+        "label": "Apat na Daan! (403) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga kaban na may yaman?", "emoji": "📦", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang mga barya sa unang kaban?", "emoji": "🪙", "count": 7, "opts": [5,6,7,8], "ans": 7 },
+    { "q": "Ilan ang mga coral sa reef?", "emoji": "🪸", "count": 6, "opts": [4,5,6,7], "ans": 6 }
+  ],
+  "passThreshold": 2
+}

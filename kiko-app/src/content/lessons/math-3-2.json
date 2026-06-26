@@ -1,0 +1,42 @@
+{
+  "id": "3.2",
+  "subject": "math",
+  "type": "lesson",
+  "order": 2,
+  "title": "Pip's Counting Trail",
+
+  "slides": [
+    {
+      "header": "ARALIN 3.2",
+      "title":  "Counting On",
+      "body":   "Sa halip na bilangin lahat mula sa isa, subukan ang mas mabilis na paraan: COUNTING ON! Halimbawa, 5 + 3: magsimula sa 5, tapos magbilang pa ng 3: 6, 7, 8!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 6, "word": "Anim" },
+          { "n": 7, "word": "Pito" },
+          { "n": 8, "word": "Walo" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 3.2",
+      "title":  "Doubles at Number Line",
+      "body":   "Ang DOUBLES tulad ng 4+4 ay madaling tandaan: 4+4=8! Sa number line, humakbang mula sa 7, tapos humakbang pa ng 2 — dadapo ka sa 9!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🐾",
+        "count": 9,
+        "label": "Siyam! (9) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang bituin pagkatapos ng pagbilang mula 9, dagdag 6?", "emoji": "⭐", "count": 15, "opts": [13,14,15,16], "ans": 15 },
+    { "q": "Ilan ang kabibe pagsamahin ang 7 at 4?", "emoji": "🐚", "count": 11, "opts": [9,10,11,12], "ans": 11 },
+    { "q": "Ilan ang kabuuan ng double na 6+6?", "emoji": "🪙", "count": 12, "opts": [10,11,12,13], "ans": 12 }
+  ],
+  "passThreshold": 2
+}

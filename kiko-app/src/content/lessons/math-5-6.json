@@ -1,0 +1,41 @@
+{
+  "id": "5.6",
+  "subject": "math",
+  "type": "lesson",
+  "order": 6,
+  "title": "BOSS CHALLENGE: The Island's Hidden Cave",
+
+  "slides": [
+    {
+      "header": "ARALIN 5.6 — BOSS CHALLENGE",
+      "title":  "Mga Solid Figure",
+      "body":   "Ang cube (tulad ng treasure chest) ay may 6 FACES, 12 EDGES, at 8 VERTICES! Ang sphere (tulad ng crystal ball) ay may 1 curved face lang, walang edges o vertices.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🏆",
+        "entries": [
+          { "n": 6, "word": "Faces" },
+          { "n": 8, "word": "Vertices" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 5.6 — BOSS CHALLENGE",
+      "title":  "Solid Figures sa Totoong Buhay",
+      "body":   "Ang lata ng soda ay isang cylinder. Ang dice ay cube. Ang party hat ay cone. Ang bola ay sphere! Lahat sila ay nakikita natin araw-araw!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "💎",
+        "count": 6,
+        "label": "Anim na Faces! (6) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang faces ng isang cube?", "emoji": "🎲", "count": 6, "opts": [4,5,6,7], "ans": 6 },
+    { "q": "Ilan ang edges ng isang cube?", "emoji": "📦", "count": 12, "opts": [8,10,12,14], "ans": 12 },
+    { "q": "Ilan ang vertices ng isang cube?", "emoji": "💎", "count": 8, "opts": [6,7,8,9], "ans": 8 }
+  ],
+  "passThreshold": 2
+}

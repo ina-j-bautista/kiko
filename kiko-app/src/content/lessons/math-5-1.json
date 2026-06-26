@@ -1,0 +1,42 @@
+{
+  "id": "5.1",
+  "subject": "math",
+  "type": "lesson",
+  "order": 1,
+  "title": "Pip Washes Ashore on Shape Island",
+
+  "slides": [
+    {
+      "header": "ARALIN 5.1",
+      "title":  "Apat na Hugis",
+      "body":   "Tingnan ang Shape Island! Ang bilog na bato ay walang anggulo — ito ay CIRCLE! Ang pinto na may 4 magkaparehong gilid ay SQUARE! Ang layag na may 3 gilid ay TRIANGLE! Ang pinto na mahaba ay RECTANGLE!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🔺",
+        "entries": [
+          { "n": 1, "word": "Bilog" },
+          { "n": 2, "word": "Parisukat" },
+          { "n": 3, "word": "Tatsulok" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 5.1",
+      "title":  "Hanapin ang Hugis sa Isla",
+      "body":   "Apat na hugis, apat na pangalan. Tingnan natin ito sa buong isla — sa bintana, gulong, pinto, at layag!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "⭐",
+        "count": 4,
+        "label": "Apat na Hugis! (4) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang gilid ng isang triangle?", "emoji": "🔺", "count": 3, "opts": [2,3,4,5], "ans": 3 },
+    { "q": "Ilan ang gilid ng isang square?", "emoji": "⬛", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang hugis na natagpuan sa isla?", "emoji": "🏝️", "count": 4, "opts": [2,3,4,5], "ans": 4 }
+  ],
+  "passThreshold": 2
+}

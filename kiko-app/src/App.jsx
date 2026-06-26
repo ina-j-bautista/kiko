@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { MATH } from "./content/loader.js";
 
 /* ================================================================
    ASSET FILE LIST  (/public folder)
@@ -6,77 +7,27 @@ import { useState, useRef, useEffect } from "react";
    bg-home.png  bg-subjects.png  bg-path.png  bg-lesson.png
    starfish.png  jellyfish.png
    Admin PIN: 1234
+
+   LESSON CONTENT
+   Add new lessons by dropping a JSON file into:
+     src/content/lessons/
+   Use _TEMPLATE.json as your starting point.
+   Restart the dev server after adding a file.
 ================================================================ */
 
 const OCEAN  = "linear-gradient(168deg,#6DE4F0 0%,#3BBBD4 38%,#1894BC 68%,#0B72A0 100%)";
-const LESSON_SEQ = ["1.1","1.2","1.3","ms1","2.1","2.2"];
+
+// ── All lesson data now comes from src/content/lessons/*.json ───
+const LESSONS    = MATH.lessons;   // { [id]: lessonObject }
+const LESSON_SEQ = MATH.seq;       // ordered array of IDs
+const PATH_NODES = MATH.nodes;     // auto-generated zigzag positions
+const PATH_SVG_H = MATH.svgH || 530; // total canvas height for the path
+const MASTERY_1  = MATH.mastery || { title:"Mastery Test", checks:[], passThreshold:4 };
 
 const MOCK_STUDENT = {
   name:"Juan dela Cruz", grade:"Grade 1", age:6,
   school:"Paaralang Elementarya ng Bagong Pag-asa",
   avatar:"🦈", joinDate:"Enero 2025", streak:3,
-};
-
-/* ── lesson data ──────────────────────────────────────────────── */
-const LESSONS = {
-  "1.1":{ key:"1.1", title:"Bilang 1 hanggang 5",
-    slides:[
-      { header:"ARALIN 1.1", title:"Matuto tayong magbilang!",
-        body:"Kasama si Kiko, bilangin natin ang mga bagay habang itinuturo ang bawat isa. Magsimula sa isa!",
-        visual:{ type:"sequence", emoji:"🐟",
-          entries:[{n:1,word:"Isa"},{n:2,word:"Dalawa"},{n:3,word:"Tatlo"},{n:4,word:"Apat"},{n:5,word:"Lima"}] } },
-      { header:"ARALIN 1.1", title:"Subukan natin!",
-        body:"Bilangin ang mga alimango. Huwag kalimutang ituro ang bawat isa!",
-        visual:{ type:"count-demo", emoji:"🦀", count:4, label:"Apat! (4) 🎉" } },
-    ],
-    checks:[
-      { q:"Ilan ang mga isda?",     emoji:"🐟", count:2, opts:[1,2,3,4], ans:2 },
-      { q:"Ilan ang mga alimango?", emoji:"🦀", count:4, opts:[2,3,4,5], ans:4 },
-      { q:"Ilan ang mga pagong?",   emoji:"🐢", count:5, opts:[3,4,5,6], ans:5 },
-    ], passThreshold:2 },
-  "1.2":{ key:"1.2", title:"Bilang 1 hanggang 10",
-    slides:[
-      { header:"ARALIN 1.2", title:"Dagdag pa tayo!",
-        body:"Magaling! Natutunan mo na ang 1-5. Ngayon, palawakin natin hanggang 10!",
-        visual:{ type:"sequence", emoji:"🐙",
-          entries:[{n:6,word:"Anim"},{n:7,word:"Pito"},{n:8,word:"Walo"},{n:9,word:"Siyam"},{n:10,word:"Sampu"}] } },
-      { header:"ARALIN 1.2", title:"Bilangin natin!",
-        body:"Gamitin ang iyong mga daliri. Bilangin ang lahat ng pagong mula isa hanggang katapusan.",
-        visual:{ type:"count-demo", emoji:"🐢", count:8, label:"Walo! (8) 🎉" } },
-    ],
-    checks:[
-      { q:"Ilan ang mga isda?",   emoji:"🐟", count:7, opts:[5,6,7,8],  ans:7 },
-      { q:"Ilan ang mga bituin?", emoji:"⭐",  count:9, opts:[7,8,9,10], ans:9 },
-      { q:"Ilan ang mga pugita?", emoji:"🐙", count:6, opts:[4,5,6,7],  ans:6 },
-    ], passThreshold:2 },
-  "1.3":{ key:"1.3", title:"Pagsasanay: 1 hanggang 10",
-    slides:[
-      { header:"ARALIN 1.3", title:"Lahat ng Bilang!",
-        body:"Ngayon ay alam mo na ang 1 hanggang 10. Pag-aralan natin silang lahat nang sabay.",
-        visual:{ type:"sequence", emoji:"🌊",
-          entries:[{n:1,word:"Isa"},{n:2,word:"Dalawa"},{n:3,word:"Tatlo"},{n:4,word:"Apat"},{n:5,word:"Lima"},
-                   {n:6,word:"Anim"},{n:7,word:"Pito"},{n:8,word:"Walo"},{n:9,word:"Siyam"},{n:10,word:"Sampu"}] } },
-      { header:"ARALIN 1.3", title:"Handa ka na!",
-        body:"Kung handa ka na, susubukan nating bilangin ang lahat ng uri ng hayop sa dagat!",
-        visual:{ type:"count-demo", emoji:"🐠", count:10, label:"Sampu! (10) 🎉" } },
-    ],
-    checks:[
-      { q:"Ilan ang mga pugita?",   emoji:"🐙", count:8,  opts:[6,7,8,9],  ans:8  },
-      { q:"Ilan ang mga alimango?", emoji:"🦀", count:3,  opts:[1,2,3,4],  ans:3  },
-      { q:"Ilan ang mga isda?",     emoji:"🐠", count:10, opts:[7,8,9,10], ans:10 },
-    ], passThreshold:2 },
-};
-
-const MASTERY_1 = {
-  title:"Mastery Test: Pagbilang 1-10",
-  checks:[
-    { q:"Ilan ang mga isda?",     emoji:"🐟", count:4, opts:[2,3,4,5],  ans:4 },
-    { q:"Ilan ang mga pagong?",   emoji:"🐢", count:7, opts:[5,6,7,8],  ans:7 },
-    { q:"Ilan ang mga alimango?", emoji:"🦀", count:2, opts:[1,2,3,4],  ans:2 },
-    { q:"Ilan ang mga bituin?",   emoji:"⭐",  count:9, opts:[7,8,9,10], ans:9 },
-    { q:"Ilan ang mga pugita?",   emoji:"🐙", count:5, opts:[3,4,5,6],  ans:5 },
-  ],
-  passThreshold:4,
 };
 
 const STATIC_SUPP = [
@@ -97,15 +48,6 @@ const STATIC_SUPP = [
     ]},
 ];
 
-const PATH_NODES = [
-  {id:"n1",key:"1.1", type:"lesson",    cx:218,cy:470},
-  {id:"n2",key:"1.2", type:"lesson",    cx:110,cy:386},
-  {id:"n3",key:"1.3", type:"lesson",    cx:260,cy:302},
-  {id:"n4",key:"ms1", type:"milestone", cx:130,cy:220},
-  {id:"n5",key:"2.1", type:"lesson",    cx:256,cy:140},
-  {id:"n6",key:"2.2", type:"lesson",    cx:168,cy:58 },
-];
-
 /* ── Gemini AI ─────────────────────────────────────────────────── */
 const generateWithGemini = async (apiKey, weakAreas) => {
   const focus = weakAreas.length ? `Focus on: ${weakAreas.join(", ")}.` : "Mixed counting 1-10.";
@@ -114,12 +56,18 @@ Return ONLY a valid JSON array, no markdown:
 [{"emoji":"🐟","count":6,"q":"Ilan ang mga isda?","opts":[4,5,6,7],"ans":6}]
 Rules: counts 1-10, opts = 4 ascending numbers including ans, q in Filipino, use: 🐟 🦀 🐢 🐙 ⭐ 🐠 🦞, each different emoji.`;
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
     { method:"POST", headers:{"Content-Type":"application/json"},
       body:JSON.stringify({contents:[{parts:[{text:prompt}]}],
         generationConfig:{temperature:0.8,maxOutputTokens:400}}) }
   );
-  if(!res.ok) throw new Error(`Gemini ${res.status}`);
+  if(!res.ok) {
+    const body = await res.text().catch(()=>"");
+    if(res.status===400) throw new Error("API key invalid o maling format. Siguraduhing tama ang key.");
+    if(res.status===403) throw new Error("API key wala permission. I-check ang Google AI Studio.");
+    if(res.status===429) throw new Error("Rate limit na. Maghintay ng 1 minuto tapos subukan ulit.");
+    throw new Error(`Gemini error ${res.status}. ${body.slice(0,80)}`);
+  }
   const data = await res.json();
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text||"";
   const m = text.match(/\[[\s\S]*?\]/);
@@ -220,6 +168,25 @@ const NiModal = ({onClose}) => (
       <button onClick={onClose} style={{background:"#007A87",color:"#FFF",border:"none",borderRadius:14,
         padding:"14px 0",fontWeight:800,fontSize:16,cursor:"pointer",fontFamily:"inherit",width:"100%"}}>
         OK, naiintindihan!
+      </button>
+    </div>
+  </div>
+);
+
+// Separate modal for lessons the student hasn't unlocked yet
+const LockedModal = ({onClose}) => (
+  <div style={{position:"absolute",inset:0,zIndex:999,background:"rgba(0,0,0,0.55)",
+    display:"flex",alignItems:"center",justifyContent:"center",padding:28}}>
+    <div style={{background:"#FFF",borderRadius:24,padding:"30px 24px",width:"100%",maxWidth:330,
+      textAlign:"center",boxShadow:"0 20px 50px rgba(0,0,0,0.28)"}}>
+      <div style={{fontSize:52,marginBottom:12}}>🔒</div>
+      <h3 style={{color:"#1C1C2E",fontWeight:900,fontSize:20,marginBottom:10}}>Naka-lock pa ito</h3>
+      <p style={{color:"#5A5A72",fontSize:14,lineHeight:1.7,marginBottom:24}}>
+        Kumpletuhin muna ang nakaraang aralin para ma-unlock ang lesson na ito. Kaya mo yan!
+      </p>
+      <button onClick={onClose} style={{background:"#F5B800",color:"#1C1C2E",border:"none",borderRadius:14,
+        padding:"14px 0",fontWeight:800,fontSize:16,cursor:"pointer",fontFamily:"inherit",width:"100%"}}>
+        Bumalik sa Mapa
       </button>
     </div>
   </div>
@@ -398,23 +365,48 @@ const Splash = ({go,openMenu,notif,isOnline}) => (
     background:OCEAN,display:"flex",flexDirection:"column",alignItems:"center"}}>
     <BgImg src="bg-home.png"/>
     <SBar isOnline={isOnline}/>
+
+    {/* K logo — top left */}
     <div style={{position:"absolute",top:34,left:16,zIndex:30}}>
       <KLogo notif={notif} onClick={openMenu} isOnline={isOnline}/>
     </div>
-    <img src="jellyfish.png" alt="" style={{position:"absolute",top:44,right:18,width:74,pointerEvents:"none",zIndex:1}}
+
+    {/* Jellyfish — top right */}
+    <img src="jellyfish.png" alt=""
+      style={{position:"absolute",top:40,right:14,width:90,pointerEvents:"none",zIndex:3}}
       onError={e=>e.target.style.display="none"}/>
-    <img src="kiko-logo.png" alt="KIKO" style={{width:230,height:"auto",marginTop:130,position:"relative",zIndex:2}}
+
+    {/* KIKO logo — tagline is baked into the image, no separate text */}
+    <img src="kiko-logo.png" alt="KIKO"
+      style={{width:440,height:"auto",marginTop:110,position:"relative",zIndex:4}}
       onError={e=>e.target.style.display="none"}/>
-    <p style={{color:"rgba(255,255,255,0.93)",fontSize:14,fontWeight:700,marginTop:10,
-      letterSpacing:0.5,textAlign:"center",position:"relative",zIndex:2,
-      textShadow:"0 1px 6px rgba(0,0,0,0.2)"}}>Bawat aral, bagong tuklas.</p>
-    <button onClick={()=>go("subjects")} style={{marginTop:34,background:"#F5B800",color:"#1C1C2E",
-      border:"none",borderRadius:32,padding:"17px 64px",fontWeight:900,fontSize:17,
-      cursor:"pointer",fontFamily:"inherit",letterSpacing:1.4,textTransform:"uppercase",
-      boxShadow:"0 8px 28px rgba(0,0,0,0.25)",position:"relative",zIndex:2}}>Get Started</button>
-    <img src="kiko-whale.png" alt="Kiko" style={{position:"absolute",bottom:36,left:"50%",
-      transform:"translateX(-50%)",width:248,pointerEvents:"none",zIndex:1}}
+
+    {/* GET STARTED button */}
+    <button onClick={()=>go("subjects")} style={{
+      marginTop:-40,
+      background:"#F5B800",color:"#1C1C2E",
+      border:"none",borderRadius:32,
+      padding:"16px 52px",
+      fontWeight:900,fontSize:18,
+      cursor:"pointer",fontFamily:"inherit",
+      letterSpacing:1.4,textTransform:"uppercase",
+      boxShadow:"0 8px 28px rgba(0,0,0,0.28)",
+      position:"relative",zIndex:4,
+    }}>Get Started</button>
+
+    {/* Kiko — very large, centered, bottom cut off */}
+    <img src="kiko-whale.png" alt="Kiko"
+      style={{
+        position:"absolute",
+        bottom:-60,
+        left:"65%",
+        transform:"translateX(-46%)",
+        width:520,
+        pointerEvents:"none",
+        zIndex:2,
+      }}
       onError={e=>e.target.style.display="none"}/>
+
     <HBar/>
   </div>
 );
@@ -424,9 +416,9 @@ const Splash = ({go,openMenu,notif,isOnline}) => (
 ================================================================ */
 const Subjects = ({go,notImpl,openMenu,notif,isOnline}) => {
   const cards=[
-    {k:"math",  label:"MATH",    icon:"3+2",is:{fontSize:28,fontWeight:900,color:"#FFF",fontStyle:"italic"},bg:"linear-gradient(135deg,#D4AB32,#A07A10)",action:()=>go("mathPath")},
-    {k:"eng",   label:"ENGLiSH", icon:"ABC",is:{fontSize:24,fontWeight:900,color:"#FFF"},                  bg:"linear-gradient(135deg,#9870CC,#6040A0)",action:notImpl},
-    {k:"sci",   label:"SCiENCE", icon:"🌱", is:{fontSize:36},                                                bg:"linear-gradient(135deg,#60C060,#3A8A3A)",action:notImpl},
+    {k:"math",  label:"MATH",    icon:"3+2",is:{fontSize:28,fontWeight:900,color:"#FFF",fontStyle:"italic"},bg:"linear-gradient(135deg,#D4AB32,#A07A10)",action:()=>go("mathPath"), available:true},
+    {k:"eng",   label:"ENGLiSH", icon:"ABC",is:{fontSize:24,fontWeight:900,color:"#FFF"},                  bg:"linear-gradient(135deg,#9870CC,#6040A0)",action:notImpl,             available:false},
+    {k:"sci",   label:"SCiENCE", icon:"🌱", is:{fontSize:36},                                                bg:"linear-gradient(135deg,#60C060,#3A8A3A)",action:notImpl,             available:false},
   ];
   return (
     <div style={{width:"100%",height:"100%",position:"relative",overflow:"hidden",
@@ -447,8 +439,10 @@ const Subjects = ({go,notImpl,openMenu,notif,isOnline}) => {
       <div style={{flex:1,padding:"4px 20px 0",display:"flex",flexDirection:"column",gap:16,position:"relative",zIndex:2}}>
         {cards.map(c=>(
           <button key={c.k} onClick={c.action} style={{background:c.bg,border:"none",borderRadius:22,
-            padding:"22px 20px",display:"flex",alignItems:"center",cursor:"pointer",fontFamily:"inherit",
-            boxShadow:"0 8px 26px rgba(0,0,0,0.18)",textAlign:"left"}}>
+            padding:"22px 20px",display:"flex",alignItems:"center",
+            cursor:c.available?"pointer":"default",fontFamily:"inherit",
+            boxShadow:"0 8px 26px rgba(0,0,0,0.18)",textAlign:"left",
+            opacity:c.available?1:0.55, position:"relative",overflow:"hidden"}}>
             <div style={{width:68,height:68,background:"rgba(255,255,255,0.18)",borderRadius:18,
               flexShrink:0,marginRight:18,display:"flex",alignItems:"center",justifyContent:"center"}}>
               <span style={c.is}>{c.icon}</span>
@@ -456,11 +450,19 @@ const Subjects = ({go,notImpl,openMenu,notif,isOnline}) => {
             <div style={{flex:1}}>
               <div style={{color:"#FFF",fontWeight:900,fontSize:22,marginBottom:5}}>{c.label}</div>
               <div style={{color:"rgba(255,255,255,0.78)",fontSize:13,fontWeight:600}}>
-                10 checkpoints left {!isOnline&&c.k==="math"&&"· 📥 Naka-download"}
+                {c.available
+                  ? `10 checkpoints left${!isOnline&&c.k==="math"?" · 📥 Naka-download":""}`
+                  : "Paparating sa susunod na update"}
               </div>
             </div>
-            <div style={{width:38,height:38,background:"rgba(0,0,0,0.14)",borderRadius:"50%",
-              display:"flex",alignItems:"center",justifyContent:"center",color:"#FFF",fontSize:22,fontWeight:700}}>›</div>
+            {c.available
+              ? <div style={{width:38,height:38,background:"rgba(0,0,0,0.14)",borderRadius:"50%",
+                  display:"flex",alignItems:"center",justifyContent:"center",
+                  color:"#FFF",fontSize:22,fontWeight:700}}>›</div>
+              : <div style={{background:"rgba(0,0,0,0.25)",borderRadius:20,padding:"4px 12px",
+                  color:"rgba(255,255,255,0.9)",fontSize:12,fontWeight:800,letterSpacing:0.5}}>
+                  Coming Soon
+                </div>}
           </button>
         ))}
       </div>
@@ -472,63 +474,102 @@ const Subjects = ({go,notImpl,openMenu,notif,isOnline}) => {
 /* ================================================================
    SCREEN: MATH PATH
 ================================================================ */
-const MathPath = ({go,notImpl,openMenu,notif,completed,startLesson,isOnline}) => {
-  const SVG_H=530;
+const MathPath = ({go,notImpl,onLocked,openMenu,notif,completed,startLesson,isOnline}) => {
+  const scrollRef = useRef(null);
+
   const getStatus=(key)=>{
     if(completed.includes(key))return"done";
     const next=LESSON_SEQ.find(k=>!completed.includes(k));
     return key===next?"current":"locked";
   };
-  let d=`M ${PATH_NODES[0].cx} ${PATH_NODES[0].cy}`;
+
+  // Scroll to bottom on mount so the first lesson is visible
+  useEffect(()=>{
+    if(scrollRef.current){
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  },[]);
+
+  let d=`M ${PATH_NODES[0]?.cx||200} ${PATH_NODES[0]?.cy||480}`;
   for(let i=1;i<PATH_NODES.length;i++){
     const p=PATH_NODES[i-1],c=PATH_NODES[i],mx=(p.cx+c.cx)/2;
     d+=` C ${mx} ${p.cy-8}, ${mx} ${c.cy+8}, ${c.cx} ${c.cy}`;
   }
+
   const nv=(s,t)=>{
     if(t==="milestone")return s==="done"?{bg:"#FFD700",bd:"#C8A000",icon:"🏆",sz:20}
       :s==="current"?{bg:"#FFB800",bd:"#C08000",icon:"🏆",sz:20}:{bg:"#B8C8D0",bd:"#8098A8",icon:"🏆",sz:16};
     return s==="done"?{bg:"#6ACC7A",bd:"#469856",icon:"✓",sz:22}
       :s==="current"?{bg:"#E07070",bd:"#B04848",icon:"●",sz:18}:{bg:"#8AB8C8",bd:"#5A8898",icon:"🔒",sz:16};
   };
+
   const handleTap=(node)=>{
     const s=getStatus(node.key);
-    if(s==="locked"||s==="done"){notImpl();return;}
+    if(s==="locked"){onLocked();return;}
+    if(s==="done")  {notImpl();return;}
     startLesson(node.key);
   };
+
   const currentKey=LESSON_SEQ.find(k=>!completed.includes(k));
   const isMastery=currentKey==="ms1";
+
   return (
     <div style={{width:"100%",height:"100%",position:"relative",overflow:"hidden",
       background:OCEAN,display:"flex",flexDirection:"column"}}>
       <BgImg src="bg-path.png"/>
       <SBar isOnline={isOnline}/>
-      <div style={{padding:"34px 20px 10px",display:"flex",alignItems:"center",gap:12,position:"relative",zIndex:2}}>
+
+      {/* Header */}
+      <div style={{padding:"34px 20px 10px",display:"flex",alignItems:"center",gap:12,
+        position:"relative",zIndex:2,flexShrink:0}}>
         <KLogo notif={notif} onClick={openMenu} isOnline={isOnline}/>
         <button onClick={()=>go("subjects")} style={{background:"rgba(0,0,0,0.15)",border:"none",
           borderRadius:10,padding:"8px 14px",color:"#FFF",fontWeight:700,fontSize:13,
           cursor:"pointer",fontFamily:"inherit"}}>‹ Paksa</button>
       </div>
-      <div style={{flex:1,position:"relative",overflow:"hidden"}}>
-        <svg width={390} height={SVG_H} viewBox={`0 0 390 ${SVG_H}`} style={{position:"absolute",top:0,left:0}}>
-          <path d={d} fill="none" stroke="rgba(0,0,0,0.10)" strokeWidth={26} strokeLinecap="round" transform="translate(0,3)"/>
-          <path d={d} fill="none" stroke="#9EDAEA" strokeWidth={24} strokeLinecap="round"/>
-          <path d={d} fill="none" stroke="rgba(255,255,255,0.32)" strokeWidth={8} strokeLinecap="round" strokeDasharray="1 18"/>
-        </svg>
-        {PATH_NODES.map(n=>{
-          const st=getStatus(n.key),v=nv(st,n.type),isMs=n.type==="milestone",sz=isMs?62:54;
-          return (
-            <button key={n.id} onClick={()=>handleTap(n)} style={{position:"absolute",
-              left:n.cx,top:n.cy,transform:"translate(-50%,-50%)",
-              width:sz,height:sz,borderRadius:isMs?"16px":"50%",
-              background:v.bg,border:`4px solid ${v.bd}`,
-              display:"flex",alignItems:"center",justifyContent:"center",
-              color:"#FFF",fontSize:v.sz,fontWeight:900,cursor:"pointer",fontFamily:"inherit",
-              boxShadow:"0 4px 18px rgba(0,0,0,0.24)",zIndex:10}}>{v.icon}</button>
-          );
-        })}
+
+      {/* Scrollable path area */}
+      <div ref={scrollRef} style={{
+        flex:1,
+        overflowY:"auto",
+        position:"relative",
+        /* hide scrollbar visually — touch scroll still works */
+        scrollbarWidth:"none",
+        msOverflowStyle:"none",
+      }}>
+        <style>{`.path-scroll::-webkit-scrollbar{display:none}`}</style>
+        {/* Inner canvas sized to fit all nodes */}
+        <div style={{position:"relative",width:"100%",height:PATH_SVG_H}}>
+          <svg width={390} height={PATH_SVG_H} viewBox={`0 0 390 ${PATH_SVG_H}`}
+            style={{position:"absolute",top:0,left:0}}>
+            <path d={d} fill="none" stroke="rgba(0,0,0,0.10)" strokeWidth={26}
+              strokeLinecap="round" transform="translate(0,3)"/>
+            <path d={d} fill="none" stroke="#9EDAEA" strokeWidth={24} strokeLinecap="round"/>
+            <path d={d} fill="none" stroke="rgba(255,255,255,0.32)" strokeWidth={8}
+              strokeLinecap="round" strokeDasharray="1 18"/>
+          </svg>
+
+          {PATH_NODES.map(n=>{
+            const st=getStatus(n.key),v=nv(st,n.type),isMs=n.type==="milestone",sz=isMs?62:54;
+            return (
+              <button key={n.id} onClick={()=>handleTap(n)} style={{
+                position:"absolute",left:n.cx,top:n.cy,
+                transform:"translate(-50%,-50%)",
+                width:sz,height:sz,borderRadius:isMs?"16px":"50%",
+                background:v.bg,border:`4px solid ${v.bd}`,
+                display:"flex",alignItems:"center",justifyContent:"center",
+                color:"#FFF",fontSize:v.sz,fontWeight:900,
+                cursor:"pointer",fontFamily:"inherit",
+                boxShadow:"0 4px 18px rgba(0,0,0,0.24)",zIndex:10,
+              }}>{v.icon}</button>
+            );
+          })}
+        </div>
       </div>
+
+      {/* Current lesson card — pinned above home bar */}
       {currentKey&&(LESSONS[currentKey]||isMastery)&&(
-        <div style={{margin:"0 16px 48px",
+        <div style={{margin:"0 16px 48px",flexShrink:0,
           background:isMastery?"linear-gradient(135deg,#FFB800,#C08000)":"linear-gradient(135deg,#D4AB32,#A07A10)",
           borderRadius:20,padding:"16px 18px",display:"flex",alignItems:"center",gap:14,
           boxShadow:"0 12px 32px rgba(0,0,0,0.28)",position:"relative",zIndex:20}}>
@@ -619,8 +660,15 @@ const LessonCheck = ({lesson,go,openMenu,notif,onComplete,isOnline}) => (
   </div>
 );
 
-const LessonComplete = ({lessonKey,go}) => {
-  const lesson=LESSONS[lessonKey]||{};
+const LessonComplete = ({lessonKey, go, score=3, total=3}) => {
+  const lesson = LESSONS[lessonKey] || {};
+  const pct    = total > 0 ? score / total : 1;
+  const stars  = pct === 1 ? 3 : pct >= 0.7 ? 2 : 1;
+  const msgs   = [
+    "Subukan mo ulit sa ibang pagkakataon para makakuha ng mas maraming bituin!",
+    "Magaling! Patuloy ka lang!",
+    "Perpekto! Napakagaling mo!",
+  ];
   return (
     <div style={{width:"100%",height:"100%",position:"relative",overflow:"hidden",
       background:OCEAN,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 24px"}}>
@@ -628,17 +676,23 @@ const LessonComplete = ({lessonKey,go}) => {
       <SBar/>
       <div style={{background:"rgba(255,255,255,0.97)",borderRadius:28,padding:"32px 24px",
         width:"100%",textAlign:"center",boxShadow:"0 20px 52px rgba(0,0,0,0.20)",position:"relative",zIndex:2}}>
-        <div style={{fontSize:64,marginBottom:16}}>🌟</div>
+        <div style={{fontSize:64,marginBottom:16}}>{stars===3?"🌟":"⭐"}</div>
         <h2 style={{color:"#1C1C2E",fontWeight:900,fontSize:24,marginBottom:8}}>Aralin Tapos Na!</h2>
         <p style={{color:"#5A5A72",fontSize:15,lineHeight:1.65,marginBottom:6}}>Natapos mo ang</p>
-        <p style={{color:"#007A87",fontWeight:900,fontSize:18,marginBottom:20}}>
+        <p style={{color:"#007A87",fontWeight:900,fontSize:18,marginBottom:16}}>
           Lesson {lessonKey}: {lesson.title}
         </p>
-        <div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:20}}>
-          {[1,2,3].map(i=><span key={i} style={{fontSize:44}}>⭐</span>)}
+        {/* Stars — earned ones full, unearned greyed out */}
+        <div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:8}}>
+          {[1,2,3].map(i=>(
+            <span key={i} style={{fontSize:44, opacity: i<=stars ? 1 : 0.2}}>⭐</span>
+          ))}
         </div>
+        <p style={{color:"#5A5A72",fontSize:13,marginBottom:8,fontWeight:700}}>
+          {score}/{total} ang tama
+        </p>
         <p style={{color:"#5A5A72",fontSize:13,lineHeight:1.65,marginBottom:24}}>
-          Na-unlock mo ang susunod na aralin. Patuloy ka sa iyong paglalakbay!
+          {msgs[stars-1]}
         </p>
         <button onClick={()=>go("mathPath")} style={{width:"100%",background:"#F5B800",color:"#1C1C2E",
           border:"none",borderRadius:16,padding:"17px",fontWeight:900,fontSize:17,
@@ -667,7 +721,10 @@ const MasteryTest = ({go,openMenu,notif,onComplete,isOnline}) => (
   </div>
 );
 
-const MasteryComplete = ({go}) => (
+const MasteryComplete = ({go, score=5, total=5}) => {
+  const pct   = total > 0 ? score / total : 1;
+  const stars = pct === 1 ? 5 : pct >= 0.8 ? 4 : pct >= 0.6 ? 3 : 2;
+  return (
   <div style={{width:"100%",height:"100%",position:"relative",overflow:"hidden",
     background:OCEAN,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 24px"}}>
     <BgImg src="bg-lesson.png"/>
@@ -676,11 +733,18 @@ const MasteryComplete = ({go}) => (
       width:"100%",textAlign:"center",boxShadow:"0 20px 52px rgba(0,0,0,0.20)",position:"relative",zIndex:2}}>
       <div style={{fontSize:72,marginBottom:16}}>🏆</div>
       <h2 style={{color:"#1C1C2E",fontWeight:900,fontSize:26,marginBottom:12}}>Mastery Test Tapos Na!</h2>
-      <div style={{display:"flex",justifyContent:"center",gap:6,marginBottom:16}}>
-        {[1,2,3,4,5].map(i=><span key={i} style={{fontSize:32}}>⭐</span>)}
+      <div style={{display:"flex",justifyContent:"center",gap:6,marginBottom:8}}>
+        {[1,2,3,4,5].map(i=>(
+          <span key={i} style={{fontSize:32, opacity: i<=stars ? 1 : 0.2}}>⭐</span>
+        ))}
       </div>
+      <p style={{color:"#5A5A72",fontSize:13,marginBottom:16,fontWeight:700}}>
+        {score}/{total} ang tama
+      </p>
       <p style={{color:"#5A5A72",fontSize:15,lineHeight:1.7,marginBottom:24}}>
-        Napatunayan mo na alam mo ang pagbilang 1 hanggang 10! Na-unlock mo ang susunod na paksa.
+        {pct===1
+          ? "Perpekto! Napatunayan mo na alam mo ang lahat!"
+          : "Napakagaling! Na-unlock mo ang susunod na paksa."}
       </p>
       <button onClick={()=>go("mathPath")} style={{width:"100%",background:"#F5B800",color:"#1C1C2E",
         border:"none",borderRadius:16,padding:"17px",fontWeight:900,fontSize:17,
@@ -689,14 +753,23 @@ const MasteryComplete = ({go}) => (
     </div>
     <HBar/>
   </div>
-);
+  );
+};
 
 /* ================================================================
    SCREEN: PROFILE
 ================================================================ */
 const ProfileScreen = ({go,openMenu,notif,lessonScores,completed,isOnline}) => {
-  const starsEarned = completed.filter(k=>LESSONS[k]).length * 3;
-  const progressPct = Math.round((completed.filter(k=>LESSONS[k]).length / 3) * 100);
+  const lessonsDone = completed.filter(k=>LESSONS[k]);
+  // 3 stars = perfect, 2 stars = passed with one wrong, 1 star = scraped through
+  const starsEarned = Object.entries(lessonScores).reduce((total,[,sc])=>{
+    const pct = sc.score / sc.total;
+    if(pct === 1)  return total + 3;
+    if(pct >= 0.8) return total + 2;
+    return total + 1;
+  }, 0);
+  const maxStars = lessonsDone.length * 3;
+  const progressPct = Math.round((lessonsDone.length / 3) * 100);
   return (
     <div style={{width:"100%",height:"100%",position:"relative",overflow:"hidden",
       background:OCEAN,display:"flex",flexDirection:"column"}}>
@@ -733,8 +806,8 @@ const ProfileScreen = ({go,openMenu,notif,lessonScores,completed,isOnline}) => {
         <div style={{display:"flex",gap:10}}>
           {[
             {icon:"🔥",val:MOCK_STUDENT.streak,label:"Araw na streak"},
-            {icon:"⭐",val:starsEarned,label:"Mga bituin"},
-            {icon:"📚",val:`${completed.filter(k=>LESSONS[k]).length}/3`,label:"Aralin"},
+            {icon:"⭐",val:maxStars>0?`${starsEarned}/${maxStars}`:"0",label:"Mga bituin"},
+            {icon:"📚",val:`${lessonsDone.length}/3`,label:"Aralin"},
           ].map((s,i)=>(
             <div key={i} style={{flex:1,background:"rgba(255,255,255,0.95)",borderRadius:18,
               padding:"14px 8px",textAlign:"center",boxShadow:"0 4px 12px rgba(0,0,0,0.10)"}}>
@@ -1050,7 +1123,7 @@ const AdminPanelScreen = ({go,lessonScores,completed,materials,isOnline,setIsOnl
               <div style={{fontWeight:800,fontSize:14,color:"#1C1C2E",marginBottom:12}}>AI Usage (Demo)</div>
               {[
                 {label:"AI materials generated",val:materials.filter(m=>m.id.startsWith("ai-")).length+" set"},
-                {label:"Gemini model",val:"gemini-1.5-flash"},
+                {label:"Gemini model",val:"gemini-2.0-flash"},
                 {label:"Avg tokens per sync",val:"~380"},
                 {label:"Syncs this week",val:materials.filter(m=>m.id.startsWith("ai-")).length},
               ].map((r,i)=>(
@@ -1401,6 +1474,8 @@ export default function KikoApp() {
   const [screen,      setScreen]      = useState("splash");
   const [menuOpen,    setMenuOpen]    = useState(false);
   const [modalOpen,   setModalOpen]   = useState(false);
+  const [lockedOpen,  setLockedOpen]  = useState(false);
+  const [lastScore,   setLastScore]   = useState({score:3,total:3});
   const [completed,   setCompleted]   = useState([]);
   const [lessonScores,setLessonScores]= useState({});
   const [currentKey,  setCurrentKey]  = useState(null);
@@ -1429,6 +1504,7 @@ export default function KikoApp() {
 
   const go       = (s) => setScreen(s);
   const notImpl  = ()  => setModalOpen(true);
+  const onLocked = ()  => setLockedOpen(true);
   const openMenu = ()  => setMenuOpen(true);
 
   const startLesson = (key) => {
@@ -1437,6 +1513,7 @@ export default function KikoApp() {
   };
 
   const completeLesson = (key, score, total) => {
+    setLastScore({score, total});
     setCompleted(p => p.includes(key) ? p : [...p, key]);
     setLessonScores(p => ({...p, [key]:{
       score, total,
@@ -1447,6 +1524,7 @@ export default function KikoApp() {
   };
 
   const completeMastery = (score, total) => {
+    setLastScore({score, total});
     setCompleted(p => p.includes("ms1") ? p : [...p,"ms1"]);
     setLessonScores(p => ({...p, ms1:{
       score, total, weakAreas:[],
@@ -1490,12 +1568,12 @@ export default function KikoApp() {
 
         {screen==="splash"          && <Splash          {...shared}/>}
         {screen==="subjects"        && <Subjects        {...shared} notImpl={notImpl}/>}
-        {screen==="mathPath"        && <MathPath        {...shared} notImpl={notImpl} completed={completed} startLesson={startLesson}/>}
+        {screen==="mathPath"        && <MathPath        {...shared} notImpl={notImpl} onLocked={onLocked} completed={completed} startLesson={startLesson}/>}
         {screen==="lessonTeach"     && lesson && <LessonTeach  {...shared} lesson={lesson}/>}
         {screen==="lessonCheck"     && lesson && <LessonCheck  {...shared} lesson={lesson} onComplete={(s,t)=>completeLesson(currentKey,s,t)}/>}
-        {screen==="lessonComplete"  && <LessonComplete  lessonKey={currentKey} go={go}/>}
+        {screen==="lessonComplete"  && <LessonComplete  lessonKey={currentKey} go={go} score={lastScore.score} total={lastScore.total}/>}
         {screen==="masteryTest"     && <MasteryTest     {...shared} onComplete={completeMastery}/>}
-        {screen==="masteryComplete" && <MasteryComplete go={go}/>}
+        {screen==="masteryComplete" && <MasteryComplete go={go} score={lastScore.score} total={lastScore.total}/>}
         {screen==="materials"       && <Materials       {...shared} materials={materials}/>}
         {screen==="profile"         && <ProfileScreen   {...shared} lessonScores={lessonScores} completed={completed}/>}
         {screen==="adminPin"        && <AdminPinScreen  go={go} onUnlock={()=>{}}/>}
@@ -1505,7 +1583,8 @@ export default function KikoApp() {
 
         {menuOpen  && <MenuOverlay onClose={()=>setMenuOpen(false)} go={go}
             notif={notif} materials={materials} onSyncDone={handleSyncDone} isOnline={isOnline}/>}
-        {modalOpen && <NiModal onClose={()=>setModalOpen(false)}/>}
+        {modalOpen && <NiModal    onClose={()=>setModalOpen(false)}/>}
+        {lockedOpen&& <LockedModal onClose={()=>setLockedOpen(false)}/>}
       </div>
     </div>
   );

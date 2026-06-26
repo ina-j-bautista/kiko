@@ -1,0 +1,41 @@
+{
+  "id": "3.1",
+  "subject": "math",
+  "type": "lesson",
+  "order": 1,
+  "title": "Pip's Treasure Combine",
+
+  "slides": [
+    {
+      "header": "ARALIN 3.1",
+      "title":  "Pagsasama ng Dalawang Pundok",
+      "body":   "May yaman si Captain Pip sa dalawang ibang lugar sa isla! Tulungan mo siyang itulak ang dalawang pundok para makita kung gaano karami ang kabuuan.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 2, "word": "Dalawa" },
+          { "n": 3, "word": "Tatlo" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 3.1",
+      "title":  "Pagsamahin, Bilangin Lahat",
+      "body":   "Pagsasama-samahin natin ang lahat: 1, 2, 3, 4, 5! Dalawang barya na SUMASAMA sa tatlong barya ay nagiging LIMANG barya. Ito ang ADDITION — pagsasama ng mga pundok para mahanap ang kabuuan!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🪙",
+        "count": 5,
+        "label": "Lima! (5) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga barya sa unang pundok?", "emoji": "🪙", "count": 2, "opts": [1,2,3,4], "ans": 2 },
+    { "q": "Ilan ang mga barya sa ikalawang pundok?", "emoji": "🪙", "count": 3, "opts": [2,3,4,5], "ans": 3 },
+    { "q": "Ilan ang lahat ng kabibe?", "emoji": "🐚", "count": 5, "opts": [3,4,5,6], "ans": 5 }
+  ],
+  "passThreshold": 2
+}

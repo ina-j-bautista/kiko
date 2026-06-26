@@ -1,0 +1,41 @@
+{
+  "id": "5.5",
+  "subject": "math",
+  "type": "lesson",
+  "order": 5,
+  "title": "The Perimeter Path",
+
+  "slides": [
+    {
+      "header": "ARALIN 5.5",
+      "title":  "Perimeter ng Hugis",
+      "body":   "Ang PERIMETER ay ang distansya sa PALIBOT ng hugis — idagdag ang lahat ng gilid! Square na may 5 meters kada gilid: 5+5+5+5 = 20 meters!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🧵",
+        "entries": [
+          { "n": 1, "word": "Gilid 1" },
+          { "n": 2, "word": "Gilid 2" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 5.5",
+      "title":  "Sides Equals Angles",
+      "body":   "Bawat plane figure ay may PAREHONG bilang ng angles (corners) at sides! Triangle: 3 sides, 3 angles. Square: 4 sides, 4 angles. Pentagon: 5 sides, 5 angles!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🌾",
+        "count": 5,
+        "label": "Limang Gilid! (5) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ano ang perimeter ng square kung 6m ang kada gilid?", "emoji": "🧵", "count": 24, "opts": [18,20,22,24], "ans": 24 },
+    { "q": "Ilan ang angles ng isang pentagon (5 sides)?", "emoji": "🌾", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ano ang perimeter ng triangle na may sides 3m, 5m, 7m?", "emoji": "🔺", "count": 15, "opts": [12,13,14,15], "ans": 15 }
+  ],
+  "passThreshold": 2
+}

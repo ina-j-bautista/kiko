@@ -1,0 +1,41 @@
+{
+  "id": "4.5",
+  "subject": "math",
+  "type": "lesson",
+  "order": 5,
+  "title": "The Order of Operations Outpost",
+
+  "slides": [
+    {
+      "header": "ARALIN 4.5",
+      "title":  "Pagbawas sa Isip",
+      "body":   "Pagbawas ng sampuan: 580 − 30 = 550! Pagbawas ng daanan: 580 − 200 = 380! Ngayon, tricky puzzle: '10 + 5 − 3 = ?' Lutasin mula KALIWA PAKANAN: 10+5=15, tapos 15−3=12.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🧭",
+        "entries": [
+          { "n": 1, "word": "Kaliwa" },
+          { "n": 2, "word": "Kanan" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 4.5",
+      "title":  "Multistep na Suliranin",
+      "body":   "May 300 barya si Pip, gumastos ng 80, tapos 25 pa. Hakbang-hakbang: 300−80=220, tapos 220−25=195!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "📜",
+        "count": 2,
+        "label": "Dalawang Hakbang! (2) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga outpost guard sa scroll?", "emoji": "📜", "count": 1, "opts": [1,2,3,4], "ans": 1 },
+    { "q": "Ilan ang mga compass na hawak ni Pip?", "emoji": "🧭", "count": 1, "opts": [1,2,3,4], "ans": 1 },
+    { "q": "Ilan ang mga port na binisita?", "emoji": "⚓", "count": 3, "opts": [1,2,3,4], "ans": 3 }
+  ],
+  "passThreshold": 2
+}

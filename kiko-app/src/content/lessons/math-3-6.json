@@ -1,0 +1,41 @@
+{
+  "id": "3.6",
+  "subject": "math",
+  "type": "lesson",
+  "order": 6,
+  "title": "BOSS CHALLENGE: The Treasure Vault Finale",
+
+  "slides": [
+    {
+      "header": "ARALIN 3.6 — BOSS CHALLENGE",
+      "title":  "Mas Malalaking Numero",
+      "body":   "Narating na ni Pip ang sikat na Treasure Vault! 1,245 + 2,130: idagdag ang isahan, sampuan, daanan, tapos libuhan, mag-regroup kung kailangan. Sagot: 3,375!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🏆",
+        "entries": [
+          { "n": 1, "word": "Isahan" },
+          { "n": 2, "word": "Libuhan" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 3.6 — BOSS CHALLENGE",
+      "title":  "Pagtatantya at Tunay na Buhay",
+      "body":   "Hindi lagi natin kailangan ang eksaktong sagot — minsan tantya lang! I-round muna ang mga numero: 1,245→1,200, 2,130→2,100. Tantya: 3,300 — mabilis at malapit sa tunay na sagot!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "💎",
+        "count": 5,
+        "label": "Limang Kaban! (5) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga kaban sa Vault?", "emoji": "💎", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang mga isla na pinuntahan ng barko?", "emoji": "🏝️", "count": 2, "opts": [1,2,3,4], "ans": 2 },
+    { "q": "Ilan ang mga trophy na makukuha sa Vault?", "emoji": "🏆", "count": 1, "opts": [1,2,3,4], "ans": 1 }
+  ],
+  "passThreshold": 2
+}

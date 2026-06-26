@@ -1,0 +1,41 @@
+{
+  "id": "3.3",
+  "subject": "math",
+  "type": "lesson",
+  "order": 3,
+  "title": "Pip's Problem-Solving Cove",
+
+  "slides": [
+    {
+      "header": "ARALIN 3.3",
+      "title":  "Mga Salaysay na Bugtong",
+      "body":   "Narito ang isang bugtong: 'Nakahanap si Pip ng 4 na barya noong Lunes at 3 pa noong Martes. Ilan lahat?' Idagdag natin: 4 + 3 = 7!",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 4, "word": "Apat" },
+          { "n": 7, "word": "Pito" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 3.3",
+      "title":  "Commutative at Identity Property",
+      "body":   "Ang 4+3 ay parehong sagot ng 3+4 — hindi mahalaga ang pagkasunod-sunod! At ang 6+0=6 — ang pagdagdag ng ZERO ay hindi nagbabago ng bilang.",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🐦",
+        "count": 7,
+        "label": "Pito! (7) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan lahat ang shells ni Pip pagkatapos magdagdag ng 5 at 2?", "emoji": "🐚", "count": 7, "opts": [5,6,7,8], "ans": 7 },
+    { "q": "Ilan ang ibon kung 2 ibon ay sumama sa 5 ibon sa puno?", "emoji": "🐦", "count": 7, "opts": [5,6,7,8], "ans": 7 },
+    { "q": "Ilan ang kabuuan ng 3 isda + 6 isda?", "emoji": "🐟", "count": 9, "opts": [7,8,9,10], "ans": 9 }
+  ],
+  "passThreshold": 2
+}

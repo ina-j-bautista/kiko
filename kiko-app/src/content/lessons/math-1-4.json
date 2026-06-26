@@ -1,0 +1,42 @@
+{
+  "id": "1.4",
+  "subject": "math",
+  "type": "lesson",
+  "order": 4,
+  "title": "Pip Sails to Hundred Island",
+
+  "slides": [
+    {
+      "header": "ARALIN 1.4",
+      "title":  "Mula Pouch Tungo sa Crate",
+      "body":   "Tandaan ang pouches ng 10? Ngayon, 10 pouches ay gumagawa ng 1 CRATE — ito ang 100! Tingnan ang 347: ang 3 ay 3 crates (300), ang 4 ay 4 pouches (40), ang 7 ay 7 loose coins.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "📦",
+        "entries": [
+          { "n": 3, "word": "Daanan" },
+          { "n": 4, "word": "Sampuan" },
+          { "n": 7, "word": "Isahan" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 1.4",
+      "title":  "Bawat Lugar, Ibang Halaga",
+      "body":   "347 = 3 hundreds + 4 tens + 7 ones. Ang bawat puwesto — hundreds, tens, ones — ay tinatawag na PLACE. Pareho ring digit, ibang puwesto, ibang halaga!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "📦",
+        "count": 7,
+        "label": "Pitong Crate! (700) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang crate na nagkakahalaga ng 100 bawat isa?", "emoji": "📦", "count": 7, "opts": [5,6,7,8], "ans": 7 },
+    { "q": "Ilan ang pouch sa numerong 215?", "emoji": "👝", "count": 1, "opts": [0,1,2,3], "ans": 1 },
+    { "q": "Ilan ang mga spyglass na natagpuan sa isla?", "emoji": "🔭", "count": 2, "opts": [1,2,3,4], "ans": 2 }
+  ],
+  "passThreshold": 2
+}

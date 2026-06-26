@@ -1,0 +1,41 @@
+{
+  "id": "4.3",
+  "subject": "math",
+  "type": "lesson",
+  "order": 3,
+  "title": "Pip's Word Problem Workshop",
+
+  "slides": [
+    {
+      "header": "ARALIN 4.3",
+      "title":  "Take Away vs. Comparison",
+      "body":   "Bugtong: 'May 9 barya si Pip, gumastos ng 4. Ilan ang natitira?' Pagkuha: 9 − 4 = 5. Bagong bugtong: 'May 8 barya si Pip, ang kaibigan niya ay may 5. Ilan ang DAGDAG na barya ni Pip?' Ito ay COMPARISON subtraction: 8 − 5 = 3.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 9, "word": "Siyam" },
+          { "n": 5, "word": "Lima" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 4.3",
+      "title":  "Parehong Operation, Ibang Kwento",
+      "body":   "Pareho ring subtraction ang dalawang uri ng bugtong — minsan tumatanggal, minsan ikukumpara. Pareho ring operation, ibang kwento lang!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🛠️",
+        "count": 3,
+        "label": "Tatlong Dagdag! (3) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang natitirang kabibe kung 3 kinuha mula sa 7?", "emoji": "🐚", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Gaano kataas ang dagdag ng Tower A (9 blocks) kaysa Tower B (4 blocks)?", "emoji": "🧱", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang natitirang gems kung 5 kinuha mula sa 12?", "emoji": "💎", "count": 7, "opts": [5,6,7,8], "ans": 7 }
+  ],
+  "passThreshold": 2
+}

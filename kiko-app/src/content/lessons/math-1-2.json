@@ -1,0 +1,41 @@
+{
+  "id": "1.2",
+  "subject": "math",
+  "type": "lesson",
+  "order": 2,
+  "title": "Pip's Coin Pouches",
+
+  "slides": [
+    {
+      "header": "ARALIN 1.2",
+      "title":  "Isa Pa, Isa Bawas",
+      "body":   "May 6 barya si Pip. Kung makakita siya ng isa pa, ilan na? 6... 7! Kung mawawalan siya ng isang barya, 7 bawas 1 ay 6 — ISA LESS.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🪙",
+        "entries": [
+          { "n": 6, "word": "Anim" },
+          { "n": 7, "word": "Pito" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 1.2",
+      "title":  "Pagbundle sa Pouch",
+      "body":   "May 10 barya si Pip na nakakalat sa kubyerta. Eksaktong kasya ang 10 barya sa ISANG pouch! Tinatawag natin itong 'a ten' — at 10 pouches ay gumagawa ng 'a hundred'!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "👝",
+        "count": 10,
+        "label": "Sampu! (10) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga barya bago mahulog ang isa?", "emoji": "🪙", "count": 8, "opts": [6,7,8,9], "ans": 8 },
+    { "q": "Ilan ang mga barya na kasya sa isang pouch?", "emoji": "👝", "count": 10, "opts": [8,9,10,11], "ans": 10 },
+    { "q": "Ilan ang mga kabibe na nakalat sa dagat?", "emoji": "🐚", "count": 5, "opts": [3,4,5,6], "ans": 5 }
+  ],
+  "passThreshold": 2
+}

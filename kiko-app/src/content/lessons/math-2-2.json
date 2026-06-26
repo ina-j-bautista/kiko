@@ -1,0 +1,42 @@
+{
+  "id": "2.2",
+  "subject": "math",
+  "type": "lesson",
+  "order": 2,
+  "title": "The Ordinal Race",
+
+  "slides": [
+    {
+      "header": "ARALIN 2.2",
+      "title":  "Una, Ikalawa, Ikatlo...",
+      "body":   "Sampung parrot ang naglalahi sa kubyerta! Ang unang dumating ay sa 1st place. Susunod ang 2nd place. Pagkatapos ang 3rd place.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🦜",
+        "entries": [
+          { "n": 1, "word": "1st" },
+          { "n": 2, "word": "2nd" },
+          { "n": 3, "word": "3rd" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 2.2",
+      "title":  "Posisyon, Hindi Bilang",
+      "body":   "Ang ordinal number ay sinasabi sa atin kung SAAN ang isang bagay sa hanay — hindi kung ILAN ang mga bagay. Tuloy-tuloy ito hanggang 10th!",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🏁",
+        "count": 10,
+        "label": "Sampu! (10th) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang mga parrot na lumahi?", "emoji": "🦜", "count": 5, "opts": [3,4,5,6], "ans": 5 },
+    { "q": "Ilan ang mga kaban (chest) sa hanay?", "emoji": "📦", "count": 7, "opts": [5,6,7,8], "ans": 7 },
+    { "q": "Ilan ang mga barya sa hanay?", "emoji": "🪙", "count": 6, "opts": [4,5,6,7], "ans": 6 }
+  ],
+  "passThreshold": 2
+}

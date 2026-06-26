@@ -1,0 +1,42 @@
+{
+  "id": "5.2",
+  "subject": "math",
+  "type": "lesson",
+  "order": 2,
+  "title": "Pip's Attribute Workshop",
+
+  "slides": [
+    {
+      "header": "ARALIN 5.2",
+      "title":  "Sides, Corners, Curves",
+      "body":   "Ang bawat hugis ay may kwento sa SIDES at CORNERS! Circle: 0 sides, 0 corners. Triangle: 3 sides, 3 corners. Square: 4 magkaparehong sides, 4 corners.",
+      "visual": {
+        "type":  "sequence",
+        "emoji": "🔍",
+        "entries": [
+          { "n": 0, "word": "Walang Corner" },
+          { "n": 3, "word": "Tatlong Corner" },
+          { "n": 4, "word": "Apat na Corner" }
+        ]
+      }
+    },
+    {
+      "header": "ARALIN 5.2",
+      "title":  "Inspeksyon ng Hugis",
+      "body":   "Maging detective! Bilangin ang sides, bilangin ang corners, tapos tingnan — diretso o kurba ang gilid?",
+      "visual": {
+        "type":  "count-demo",
+        "emoji": "🧱",
+        "count": 4,
+        "label": "Apat na Corner! (4) 🎉"
+      }
+    }
+  ],
+
+  "checks": [
+    { "q": "Ilan ang corner ng isang triangle?", "emoji": "🔺", "count": 3, "opts": [1,2,3,4], "ans": 3 },
+    { "q": "Ilan ang sides ng isang rectangle?", "emoji": "▬", "count": 4, "opts": [2,3,4,5], "ans": 4 },
+    { "q": "Ilan ang corner ng isang square?", "emoji": "⬛", "count": 4, "opts": [2,3,4,5], "ans": 4 }
+  ],
+  "passThreshold": 2
+}
